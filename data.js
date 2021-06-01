@@ -9,6 +9,7 @@ export const data = [
       address: 'Av. Sabiá, 825 - Indianópolis, São Paulo - SP, 04515-001',
       phone: '(11) 4673-0255',
       stars: 1,
+      image: require('./assets/comfort-ibirapurera.jpg'),
     },
   },
   {
@@ -19,6 +20,7 @@ export const data = [
       address: 'Av. Sabiá, 825 - Indianópolis, São Paulo - SP, 04515-001',
       phone: '(11) 4673-0255',
       stars: 3,
+      image: require('./assets/comfort-ibirapurera.jpg'),
     },
   },
   {
@@ -39,6 +41,7 @@ export const data = [
       address: 'Av. Sabiá, 825 - Indianópolis, São Paulo - SP, 04515-001',
       phone: '(11) 4673-0255',
       stars: 5,
+      image: require('./assets/comfort-ibirapurera.jpg'),
     },
   },
   {
@@ -49,6 +52,7 @@ export const data = [
       address: 'Av. Sabiá, 825 - Indianópolis, São Paulo - SP, 04515-001',
       phone: '(11) 4673-0255',
       stars: 5,
+      image: require('./assets/comfort-ibirapurera.jpg'),
     },
   },
   {
@@ -59,6 +63,7 @@ export const data = [
       address: 'Av. Sabiá, 825 - Indianópolis, São Paulo - SP, 04515-001',
       phone: '(11) 4673-0255',
       stars: 5,
+      image: require('./assets/comfort-ibirapurera.jpg'),
     },
   },
   {
@@ -69,6 +74,7 @@ export const data = [
       address: 'Av. Sabiá, 825 - Indianópolis, São Paulo - SP, 04515-001',
       phone: '(11) 4673-0255',
       stars: 5,
+      image: require('./assets/comfort-ibirapurera.jpg'),
     },
   },
   {
@@ -79,6 +85,7 @@ export const data = [
       address: 'Av. Sabiá, 825 - Indianópolis, São Paulo - SP, 04515-001',
       phone: '(11) 4673-0255',
       stars: 5,
+      image: require('./assets/comfort-ibirapurera.jpg'),
     },
   },
   {
@@ -89,6 +96,7 @@ export const data = [
       address: 'Av. Sabiá, 825 - Indianópolis, São Paulo - SP, 04515-001',
       phone: '(11) 4673-0255',
       stars: 5,
+      image: require('./assets/comfort-ibirapurera.jpg'),
     },
   },
 ];
