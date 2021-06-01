@@ -11,7 +11,7 @@ export default class Header extends React.Component {
     return (
       <View style={[styles.container, { backgroundColor: backgroundColor || 'transparent' }]}>
         <Text style={[styles.titleSize, { color: foregroundColor || '#000' }]}>{title}</Text>
-        {excerpt.toString().trim() !== "" && (
+        {excerpt && excerpt.toString().trim() !== '' && (
           <Text style={[styles.excerptSize, { color: foregroundColor || '#000' }]}>{excerpt}</Text>
         )}
       </View>
