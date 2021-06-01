@@ -1,69 +1,34 @@
 import React from 'react';
-import {
-  FlatList,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
-} from 'react-native';
-import Header from '../components/Header';
+import { FlatList } from 'react-native';
+import Layout from '../components/Layout';
+import ListItem from '../components/ListItem';
 import { data } from '../data';
 
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
-  renderItem = ({
-    item: {
-      details: { name, price },
-    },
-  }) => (
-    <View>
-      <TouchableOpacity
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          borderBottomColor: '#000',
-          borderBottomWidth: 1,
-          padding: 12,
-        }}
-      >
-        <Text>{name}</Text>
-        <Text>R$ {price}</Text>
-      </TouchableOpacity>
-    </View>
-  );
+  renderList = ({ item }) => {
+    const { navigation } = this.props;
+
+    return (
+      <ListItem
+        {...item}
+        onPress={id =>
+          navigation.navigate('Details', {
+            itemId: id,
+          })
+        }
+      />
+    );
+  };
 
   render() {
     return (
-      <SafeAreaView style={styles.container}>
-        <Header
-          backgroundColor={styles.primaryBg.backgroundColor}
-          foregroundColor={styles.textWhite.color}
-          title="Hotéis"
-          excerpt=""
-        />
-        <FlatList data={data} keyExtractor={item => item.id} renderItem={this.renderItem} />
-        <StatusBar barStyle="light-content" backgroundColor={styles.primaryBg.backgroundColor} />
-      </SafeAreaView>
+      <Layout title="Hotéis">
+        <FlatList data={data} keyExtractor={item => item.id} renderItem={this.renderList} />
+      </Layout>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  textWhite: {
-    color: '#fff',
-  },
-  primaryBg: {
-    backgroundColor: '#f12',
-  },
-  container: {
-    flex: 1,
-    backgroundColor: '#e7e7e7',
-  },
-});
