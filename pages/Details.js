@@ -1,14 +1,6 @@
 import React from 'react';
-import {
-  Image,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import Header from '../components/Header';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import Layout from '../components/Layout';
 import { data } from '../data';
 
 export default class Details extends React.Component {
@@ -21,14 +13,9 @@ export default class Details extends React.Component {
     const item = data.filter(item => item.id === route.params.itemId)[0];
 
     return (
-      <SafeAreaView style={{ flex: 1 }}>
-        <Header
-          title={item.details.name}
-          excerpt={`${item.details.stars} estrelas`}
-          backgroundColor="#f12"
-          foregroundColor="#fff"
-        />
+      <Layout title={item.details.name} excerpt={`${item.details.stars} estrelas`}>
         <Image source={item.details.image} style={{ width: '100%', height: 350 }} />
+        
         <View style={styles.content}>
           <View>
             <View style={styles.row}>
@@ -46,6 +33,7 @@ export default class Details extends React.Component {
               </Text>
             </View>
           </View>
+          
           <TouchableOpacity
             style={{
               backgroundColor: '#f12',
@@ -59,8 +47,7 @@ export default class Details extends React.Component {
             <Text style={{ color: '#fff', fontSize: 20, textAlign: 'center' }}>Fechar</Text>
           </TouchableOpacity>
         </View>
-        <StatusBar barStyle="light-content" backgroundColor="#f12" />
-      </SafeAreaView>
+      </Layout>
     );
   }
 }
