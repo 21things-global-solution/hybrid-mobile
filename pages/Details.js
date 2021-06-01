@@ -1,12 +1,12 @@
 import React from 'react';
 import {
-    Image,
-    SafeAreaView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View
+  Image,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import Header from '../components/Header';
 import { data } from '../data';
@@ -17,7 +17,9 @@ export default class Details extends React.Component {
   }
 
   render() {
-    const item = data[1];
+    const { navigation, route } = this.props;
+    const item = data.filter(item => item.id === route.params.itemId)[0];
+
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <Header
@@ -52,6 +54,7 @@ export default class Details extends React.Component {
               borderRadius: 5,
               alignSelf: 'center',
             }}
+            onPress={navigation.goBack}
           >
             <Text style={{ color: '#fff', fontSize: 20, textAlign: 'center' }}>Fechar</Text>
           </TouchableOpacity>
