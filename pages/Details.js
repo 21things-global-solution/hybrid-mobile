@@ -15,17 +15,19 @@ export default class Details extends React.Component {
     return (
       <Layout title={item.details.name} excerpt={`${item.details.stars} estrelas`}>
         <Image source={item.details.image} style={{ width: '100%', height: 350 }} />
-        
+
         <View style={styles.content}>
           <View>
             <View style={styles.row}>
               <Text style={[styles.contentSize, styles.itemLabel]}>Endereço:</Text>
               <Text style={[styles.contentSize, styles.itemContent]}>{item.details.address}</Text>
             </View>
+
             <View style={styles.row}>
               <Text style={[styles.contentSize, styles.itemLabel]}>Telefone:</Text>
               <Text style={[styles.contentSize, styles.itemContent]}>{item.details.phone}</Text>
             </View>
+
             <View style={styles.row}>
               <Text style={[styles.contentSize, styles.itemLabel]}>Preço:</Text>
               <Text style={[styles.contentSize, styles.itemContent]}>
@@ -33,18 +35,9 @@ export default class Details extends React.Component {
               </Text>
             </View>
           </View>
-          
-          <TouchableOpacity
-            style={{
-              backgroundColor: '#f12',
-              padding: 10,
-              maxWidth: 100,
-              borderRadius: 5,
-              alignSelf: 'center',
-            }}
-            onPress={navigation.goBack}
-          >
-            <Text style={{ color: '#fff', fontSize: 20, textAlign: 'center' }}>Fechar</Text>
+
+          <TouchableOpacity style={styles.btnClose} onPress={navigation.goBack}>
+            <Text style={styles.btnCloseText}>Fechar</Text>
           </TouchableOpacity>
         </View>
       </Layout>
@@ -54,7 +47,7 @@ export default class Details extends React.Component {
 
 const styles = StyleSheet.create({
   contentSize: {
-    fontSize: 18,
+    fontSize: 16,
   },
   content: {
     padding: 12,
@@ -73,5 +66,17 @@ const styles = StyleSheet.create({
   },
   itemContent: {
     flexShrink: 1,
+  },
+  btnClose: {
+    backgroundColor: '#f12',
+    padding: 10,
+    maxWidth: 100,
+    borderRadius: 5,
+    alignSelf: 'center',
+  },
+  btnCloseText: {
+    color: '#fff',
+    fontSize: 18,
+    textAlign: 'center',
   },
 });
