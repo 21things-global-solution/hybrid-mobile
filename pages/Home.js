@@ -27,7 +27,13 @@ export default class Home extends React.Component {
   render() {
     return (
       <Layout title="Hotéis">
-        <FlatList data={data} keyExtractor={item => item.id} renderItem={this.renderList} />
+        <FlatList
+          data={data.sort(
+            (a, b) => a.details.stars < b.details.stars && a.details.name < b.details.name
+          )}
+          keyExtractor={item => item.id}
+          renderItem={this.renderList}
+        />
       </Layout>
     );
   }
