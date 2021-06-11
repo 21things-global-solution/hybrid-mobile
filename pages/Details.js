@@ -1,16 +1,20 @@
 import React from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Layout from '../components/Layout';
 import { data } from '../data';
-
 export default class Details extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  handleClick = async url => {
+    await Linking.openURL(url);
+  };
+
   render() {
     const { navigation, route } = this.props;
     const item = data.filter(item => item.id === route.params.itemId)[0];
+    const phonePattern = /^(?<ddd>[0-9]{2})(?<initial>[0-9]{4,5})(?<end>[0-9]{4})$/g
 
     return (
       <Layout title={item.details.name} excerpt={`${item.details.stars} estrelas`}>
@@ -25,7 +29,7 @@ export default class Details extends React.Component {
 
             <View style={styles.row}>
               <Text style={[styles.contentSize, styles.itemLabel]}>Telefone:</Text>
-              <Text style={[styles.contentSize, styles.itemContent]}>{item.details.phone}</Text>
+              <Text style={[styles.contentSize, styles.itemContent]}>{item.details.phone.replace(phonePattern, `($<ddd>) $<initial>-$<end>`)}</Text>
             </View>
 
             <View style={styles.row}>
@@ -34,6 +38,18 @@ export default class Details extends React.Component {
                 {item.details.price.toFixed(2)}
               </Text>
             </View>
+
+            {item.details.site && (
+              <View style={styles.row}>
+                <Text style={[styles.contentSize, styles.itemLabel]}>Site:</Text>
+                <Text
+                  style={[styles.contentSize, styles.itemContent, styles.link]}
+                  onPress={() => this.handleClick(item.details.site)}
+                >
+                  {item.details.site}
+                </Text>
+              </View>
+            )}
           </View>
 
           <TouchableOpacity style={styles.btnClose} onPress={navigation.goBack}>
@@ -79,4 +95,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
   },
+  link: {
+    textDecorationLine: "underline",
+    color: "blue"
+  }
 });
